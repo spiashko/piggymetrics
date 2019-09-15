@@ -2,6 +2,6 @@ FROM java:8-jre
 MAINTAINER Alexander Lukyanchikov <sqshq@sqshq.com>
 
 ADD ./target/statistics-service.jar /app/
-CMD ["java", "-Xmx200m", "-jar", "/app/statistics-service.jar"]
+CMD ["java", "-Xmx200m", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005", "-jar", "/app/statistics-service.jar"]
 
-EXPOSE 7000
+EXPOSE 7000 5005
